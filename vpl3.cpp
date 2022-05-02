@@ -1,29 +1,24 @@
-#include <iostream>
 #include <map>
 #include <string>
-#include <fstream>
+#include <iostream>
 #include <sstream>
-
 using namespace std;
-
-
-void imprimir (map<string,int> &v){
-    map<string,int>::iterator it;
-    for (it=v.begin(); it != v.end();it++){
-        cout << *it;
-    }
-}   
-
-//while (palavra << s) {
-
-int main(){ 
-    string s;
+int main()
+{   string s;
     stringstream ss;
     getline(cin,s);
     ss << s;
+    map<string, int> count;
     string palavra;
-    map<string,int>contador;
-    Imprimir(s);
-
-
+    map<string, int>::iterator ocorrencia;
+    while (ss >> palavra)
+    {
+        map<string, int>::iterator itr = count.emplace(palavra, 0).first;
+        ++itr->second;
+        if (count.size() == 1 || itr->second > ocorrencia->second)
+            ocorrencia = itr;
     }
+    
+    cout << ocorrencia->first << endl;
+
+}
